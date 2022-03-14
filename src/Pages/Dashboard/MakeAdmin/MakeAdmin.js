@@ -43,7 +43,7 @@ const MakeAdmin = () => {
                     type="email"
                     onBlur={handleOnBlur}
                     variant="standard" />
-                    <Button variant="contained" type="submit">Make Admni</Button>
+                    <Button variant="contained" type="submit">Make Admnin</Button>
             </form>
         </div>
     );
