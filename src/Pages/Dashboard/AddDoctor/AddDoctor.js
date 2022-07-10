@@ -14,12 +14,12 @@ const AddDoctor = () => {
         e.preventDefault();
         if(!image){
             return;
-        }
+        };
         const formData = new FormData();
         formData.append('name', name);
         formData.append('email', email);
         formData.append('image', image);
-        fetch('http://localhost:5000/doctors', {
+        fetch('https://gentle-falls-83113.herokuapp.com/doctors', {
             method: 'POST',
             body: formData
             })
@@ -35,6 +35,7 @@ const AddDoctor = () => {
             console.error('Error:', error);
             });
     }
+    //end handleSubmit
     return (
         <div>
             <h2> Add a doctor</h2>
@@ -57,7 +58,8 @@ const AddDoctor = () => {
                  <br/>
                  <Input accept="image/*" type="file"  
                 //  onChange = {e => console.log(e.target.files[0])} />
-                 onChange = {e => setImage(e.target.files[0])} />
+                 onChange = {e => setImage(e.target.files[0])}
+                  />
                   {/* files array like object */}
                  <br />
                 <Button variant="contained" type="submit">

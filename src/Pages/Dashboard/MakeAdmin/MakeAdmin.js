@@ -12,7 +12,7 @@ const MakeAdmin = () => {
     }
     const handleAdminSubmit = e => {
         const user = { email} ;
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://gentle-falls-83113.herokuapp.com/users/admin', {
              method: "PUT",
           headers : {
               'authorization' : `Bearer ${token}`,
@@ -25,7 +25,7 @@ const MakeAdmin = () => {
            
            if(data.modifiedCount){
             console.log(data);
-            // setEmail('');
+            setEmail('');
             setSuccess(true)
            }
         })

@@ -10,11 +10,11 @@ const CheckoutForm = ({ appointment }) => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
-    const [clientSecrete, setClientSecret] = useState('');
+    const [clientSecret, setClientSecret] = useState('');
     const {user} = useAuth()
 
     useEffect(()=>{
-      fetch('http://localhost:5000/create-payment-intent', {
+      fetch('https://gentle-falls-83113.herokuapp.com/create-payment-intent', {
         method : 'POST',
         headers : {
           'content-type' : 'application/json'
@@ -49,7 +49,7 @@ const CheckoutForm = ({ appointment }) => {
         
          //payment intent
          const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
-        clientSecrete,
+        clientSecret,
         {
           payment_method: {
             card: card,
@@ -76,7 +76,7 @@ const CheckoutForm = ({ appointment }) => {
           last4 : paymentMethod.card.last4,
           transection : paymentIntent.client_secret.slice('_secret')[0],
         }
-        const url = `http://localhost:5000/appointments/${_id}`;
+        const url = `https://gentle-falls-83113.herokuapp.com/appointments/${_id}`;
         fetch(url, {
           method : 'PUT',
           headers : {

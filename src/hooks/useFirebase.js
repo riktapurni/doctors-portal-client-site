@@ -34,6 +34,8 @@ const signInUsingGoogle = (location, navigate) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+              const user = userCredential.user;
+              console.log(user);
                 setAuthError('');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
@@ -86,6 +88,7 @@ const logOut = () =>{
     const unsubscribed = onAuthStateChanged(auth, (user) => {
   if (user) {
     setUser(user);
+    // jwt 
     getIdToken(user)
     .then(idToken => {
       // console.log(idToken)
@@ -100,7 +103,7 @@ return () => unsubscribed;
   }, [auth]);
 //who is admin or not
  useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://gentle-falls-83113.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email]);
@@ -109,7 +112,7 @@ return () => unsubscribed;
  const saveUser = (email, displayName, method) => {
           const user = {email, displayName}; //property er name r property er value j variable a ache ta same tai email and displayName rakha hoiche/
           //send data to the backend
-          fetch('http://localhost:5000/users', {
+          fetch('https://gentle-falls-83113.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

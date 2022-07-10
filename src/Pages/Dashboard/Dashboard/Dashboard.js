@@ -134,7 +134,8 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-          <Outlet></Outlet>
+          <Outlet></Outlet> 
+        {/* ekhane age routes chilo ja cut kore app.js a nea hoyeche */}
        
       </Box>
     </Box>
